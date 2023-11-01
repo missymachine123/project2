@@ -51,7 +51,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	}
 	}
 		out2.println("</table><br />");
-		out.println("<p</p><center><a href='customerOrderInfo'> <button>Click</button> </a></center>");
+		out2.println("<p</p><center><a href='customerOrderInfo'> <button>Click</button> </a></center>");
 	}
 
 	/**

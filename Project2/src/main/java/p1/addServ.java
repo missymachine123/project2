@@ -13,15 +13,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.ServletException;
+//import javax.servlet.annotation.WebServlet;
+//import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class updateStudentTable
  */
-@WebServlet("/addServ")
+@WebServlet("/addServer")
 public class addServ extends HttpServlet {
 private static final long serialVersionUID = 1L;
        
@@ -44,24 +44,24 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 e1.printStackTrace();
 }
 try {
-out.println("work");
-mycon2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1","root","12345");
-PreparedStatement updateStmt = mycon2.prepareStatement("INSERT INTO products VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+//out.println("work");
+mycon2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/db1","root","12345");
+PreparedStatement updateStmt = mycon2.prepareStatement("INSERT INTO products (productID, productName, productDesc, pic, category, qty, customerPrice, importedPrice) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 	
-	updateStmt.setInt(1, request.getParameter("id"));
+	updateStmt.setString(1, request.getParameter("id"));
 	updateStmt.setString(2, request.getParameter("name"));
 	updateStmt.setString(3,request.getParameter("d"));
 	updateStmt.setString(4, request.getParameter("pic"));
-	updateStmt.setString(5, request.getParameter("cat"));
-	updateStmt.setInt(6, request.getParameter("q"));
-	updateStmt.setFloat(7, request.getParameter("pr"));
-	updateStmt.setFloat(8, request.getParameter("ipr")); 
+	updateStmt.setString(5, request.getParameter("cat")); 
+	updateStmt.setInt(6, Integer.parseInt(request.getParameter("q")));
+	updateStmt.setFloat(7, Float.parseFloat(request.getParameter("pr")));	
+	updateStmt.setFloat(8, Float.parseFloat(request.getParameter("ipr")));
 	//updateStmt2.executeUpdate();
-x=updateStmt.executeUpdate();
+	x=updateStmt.executeUpdate();
 if(x>0) {
-out.println("Product has been added.");
-out.println("Check updated list.");
-out.println("<p</p><center><a href='productList'> <button>Click</button> </a></center>");
+	out.println("Product has been added.");
+	out.println("Check updated list.");
+	out.println("<p</p><center><a href='productList'> <button>Click</button> </a></center>");
 } else {
 	out.println("An issue occured. Please try again.");
 	out.println("<a href='addEmployee.html'> <button>Click</button> </a>");

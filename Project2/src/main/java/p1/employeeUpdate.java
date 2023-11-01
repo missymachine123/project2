@@ -36,12 +36,12 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			e1.printStackTrace();
 	}
 	try {
-		mycon2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1","root","12345");		
-		PreparedStatement updateStmt = mycon2.prepareStatement("update products set quantity = ? where productID=?");
-		updateStmt.setString(1, request.getParameter("quantity"));
+		mycon2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/db1","root","12345");		
+		PreparedStatement updateStmt = mycon2.prepareStatement("update products set qty = ? where productID=?");
+		updateStmt.setInt(1, Integer.parseInt(request.getParameter("quantity")));
 		updateStmt.setString(2, request.getParameter("productID"));
-		PreparedStatement updateStmt2 = mycon2.prepareStatement("update products set price = ? where productID=?");
-		updateStmt2.setString(1, request.getParameter("price"));
+		PreparedStatement updateStmt2 = mycon2.prepareStatement("update products set customerPrice = ? where productID=?");
+		updateStmt2.setFloat(1, Float.parseFloat(request.getParameter("price")));
 		updateStmt2.setString(2, request.getParameter("productID"));
 		x=updateStmt.executeUpdate();	
 		y=updateStmt2.executeUpdate();

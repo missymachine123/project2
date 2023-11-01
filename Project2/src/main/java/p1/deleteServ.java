@@ -12,15 +12,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.ServletException;
+//import javax.servlet.annotation.WebServlet;
+//import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class updateStudentTable
  */
-@WebServlet("/deleteServ")
+@WebServlet("/deleteServer")
 public class deleteServ extends HttpServlet {
 private static final long serialVersionUID = 1L;
        
@@ -43,9 +43,9 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 e1.printStackTrace();
 }
 try {
-mycon2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1","root","12345");
+mycon2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/db1","root","12345");
 PreparedStatement updateStmt = mycon2.prepareStatement("DELETE FROM products WHERE productID=?");
-updateStmt.setInt(1, request.getParameter("id"));
+updateStmt.setString(1, request.getParameter("id"));
 //updateStmt.executeUpdate();
 x=updateStmt.executeUpdate();
 if(x>0) {
