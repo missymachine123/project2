@@ -99,4 +99,34 @@
     <servlet-name>s2</servlet-name>
     <url-pattern>/s2</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>addServ</display-name>
+    <servlet-name>addServ</servlet-name>
+    <servlet-class>p1.addServ</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addServ</servlet-name>
+    <url-pattern>/addServ</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>deleteServ</display-name>
+    <servlet-name>deleteServ</servlet-name>
+    <servlet-class>p1.deleteServ</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteServ</servlet-name>
+    <url-pattern>/deleteServ</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>changeOrderStatus</display-name>
+    <servlet-name>changeOrderStatus</servlet-name>
+    <servlet-class>p1.changeOrderStatus</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>changeOrderStatus</servlet-name>
+    <url-pattern>/changeOrderStatus</url-pattern>
+  </servlet-mapping>
 </web-app>
