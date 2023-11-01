@@ -1,0 +1,58 @@
+<html>
+  <head>
+ <style>
+   
+   .btn button{
+     height: 10%;
+	 width: 10%;
+     font-size: 20px;
+     background-color: #002f63; 
+     border: 1px solid #add8e6; 
+     color: #add8e6;
+   }
+   
+ </style>
+  <script>
+
+ 
+ function home()
+ {
+ ifram_cont.src="homePage.html";
+ }
+     function list()
+ {
+ ifram_cont.src="productList";
+ }
+     function cart()
+ {
+ ifram_cont.src="showShopCart";
+ }
+     function em()
+ {
+ ifram_cont.src="employeeArea.html";
+ }
+    
+ </script> 
+ <title> Overbyte Home</title>
+  </head>
+  <body >
+    
+    <table width="100%"  height="100%"  >
+      <!-- row 1 -->
+	  <center>
+	   <div class="btn">
+	  <button onclick="home()">Home</button>
+	  <button onclick="list()">Products</button>
+	  <button onclick="cart()">Shopping Cart</button>
+	  <button onclick="em()">Employee</button>
+	  </div>
+	  </center>
+
+	  <iframe id="ifram_cont" src="homePage.html" width="100%" height="100%"	>
+</iframe>
+</table>
+
+ <p>
+ </p>
+</body>
+</html>

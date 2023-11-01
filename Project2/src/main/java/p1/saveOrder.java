@@ -35,7 +35,7 @@ public class saveOrder extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.println("order Processing");
+		out.println("Order Processing");
 		out.println(request.getParameter("customerID"));
 		//out.println("update order");
 		int x,y=0;
@@ -53,7 +53,7 @@ public class saveOrder extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			mycon2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/db1","root","12345");
-			PreparedStatement insertSQL = mycon2.prepareStatement("insert into order values(?,?,? );");
+			PreparedStatement insertSQL = mycon2.prepareStatement("insert into order values(?,?,?,? );");
 			//y=s.executeUpdate("Insert into order values ('s','s',3);");
 			for(int i=0; i<shoppingCart.size(); i++) {
 				insertSQL.setString(1,request.getParameter("customerID").toString()); 
@@ -61,6 +61,7 @@ public class saveOrder extends HttpServlet {
 				  
 				int qtyOrder=shoppingCart.get(i).getQty();
 				insertSQL.setInt(3, qtyOrder);
+				insertSQL.setString(4, "Ordered");
 				x=insertSQL.executeUpdate();
 				  
 				if(x>1) {

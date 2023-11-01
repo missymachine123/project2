@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+body {
+		background-color:#002f63;
+		color: #add8e6;
+		font-family: arial;
+	}
+	
+	
+table, td {
+			border: 4px solid;
+			border-color:#add8e6;
+			font-family: arial;
+	}
+	
+tr:hover ,.block:hover {background-color: #003d82;}
