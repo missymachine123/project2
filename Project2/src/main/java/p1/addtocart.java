@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import jakarta.servlet.RequestDispatcher;
 /**
  * Servlet implementation class addtocart
  */
@@ -28,44 +29,38 @@ public class addtocart extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        HttpSession session=request.getSession();
-        ArrayList previousProducts=(ArrayList)session.getAttribute("previousProducts");
-        PrintWriter out=response.getWriter();
-        if(previousProducts==null) {
-            previousProducts=new ArrayList();
-            session.setAttribute("previousProducts", previousProducts);
-        }
-        String newProdID=request.getParameter("productid");
-        if(newProdID!=null)
-        {
-            previousProducts.add(newProdID);
-            
-        }
-        
-        out.println("<html><head><title>ADD to Cart</title></head><body>");
-        if(previousProducts.size()==0) {
-            out.println("<h2>Empty Cart!</h2>");
-            
-        }
-        else {
-            out.println("<table border='1'>");
-            for(int i=0; i<previousProducts.size(); i++) {
-                out.println("<tr><td>"+previousProducts.get(i)+"</tr></td>");
-            }
-            out.println("</table>");
-        }
-         
-        out.println("<p>you have add to the cart:"+request.getParameter("productid")+"</p>");
-        out.println("</body></html>");
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet(request, response);
-    }
-
-}
+    	// TODO Auto-generated method stub
+    	HttpSession session=request.getSession();
+    	     ArrayList<row> shopCart=(ArrayList)session.getAttribute("sCart");
+    	     PrintWriter out=response.getWriter();
+    	     if (shopCart == null) {
+    	    shopCart = new ArrayList();
+    	    session.setAttribute("sCart", shopCart);
+    	     }
+    	     String Id, name, desc, pic;
+    	     float price;
+    	     int qty;
+    	     Id=request.getParameter("productid");
+    	     name=request.getParameter("productName");
+    	     desc=request.getParameter("productDesc");
+    	     pic=request.getParameter("pic");
+    	     price=Float.parseFloat(request.getParameter("customerPrice"));
+    	     qty=Integer.parseInt(request.getParameter("qtyOrder"));
+    	     
+    	     
+    	     row Item=new row(Id, name, desc, pic, "teeth" ,qty, price,0);
+    	     shopCart.add(Item);
+    	     session.setAttribute("sCart", shopCart);
+    	     RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/showShopCart");
+    	     RequetsDispatcherObj.forward(request, response);
+    	     
+    	     
+    	}
+    	/**
+    	* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    	*/
+    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	// TODO Auto-generated method stub
+    	doGet(request, response);
+    	}
+    	}
